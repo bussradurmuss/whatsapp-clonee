@@ -6,13 +6,20 @@ import SearchIcon from '@mui/icons-material/Search';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import React, {useEffect, useState} from 'react'
 import './Chat.css';
+import {InsertEmoticon, Mic, MiscellaneousServicesOutlined} from '@mui/icons-material';
 
 function Chat() {
+    const [input, setInput] = useState('');
     const [seed, setSeed] = useState('');
 
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000));
     }, []);
+
+    const sendMessage = (e) => {
+        e.preventDefault();
+        console.log('you typed >>>', input)
+    }
 
     return (
         <div className='chat'>
@@ -40,10 +47,36 @@ function Chat() {
 
 
             </div>
-            <div className='chat__body'></div>
-            <div className='chat__footer'></div>
+            <div className='chat__body'>
+                <p className={
+                    `chat__message ${
+                        true && "chat__reciever"
+                    }`
+                }>Hey Guys
+                    <span className='chat__name'>Büşra Durmuş</span>
+                    <span className='chat__timestamp'>
+                        19:40
+                    </span>
+
+                </p>
+            </div>
+            <div className='chat__footer'>
+                <InsertEmoticon/>
+                <form>
+                    <input value={input}
+                        onChange={
+                            (e) => setInput(e.target.value)
+                        }
+                        type='text'
+                        placeholder='Type a message'/>
+                    <button onClick={sendMessage}
+                        type='submit'>Send a message</button>
+                </form>
+                <Mic/>
+
+            </div>
         </div>
+
     )
 }
-
 export default Chat
