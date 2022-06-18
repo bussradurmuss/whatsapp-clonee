@@ -13,7 +13,7 @@ A small whatsapp clone app where messages are exchanged with firebase.
 
 ## Preview
 
-![App Preview]https://github.com/bussradurmuss/whatsapp-clonee/blob/main/src/screenshot/wp-homepage.png
+![App Preview](https://github.com/bussradurmuss/whatsapp-clonee/blob/main/src/screenshot/wp-homepage.png)
 
 ![App Login Preview](https://github.com/bussradurmuss/whatsapp-clonee/blob/main/src/screenshot/wp-googleauth.png)
 
