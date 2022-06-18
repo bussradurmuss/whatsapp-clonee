@@ -1,17 +1,31 @@
-import './App.css';
-import Chat from './Chat';
-import Sidebar from './Sidebar';
+import "./App.css";
+import Chat from "./Chat";
+import Sidebar from "./Sidebar";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./Login";
+import { useStateValue } from "./StateProvider";
 
 function App() {
-    return (
-        <div className="app">
-            <div className="app__body">
-                <Sidebar/>
-                <Chat/>
+  const [{ user }, dispatch] = useStateValue();
+  return (
+    <div className="app">
+      {!user ? (
+        <Login />
+      ) : (
+        <div className="app__body">
+          <BrowserRouter>
+            <Sidebar />
+            <Routes>
+              <Route path="/rooms/:roomId" element={<Chat />} />
 
-            </div>
+              <Route Route path="/" element={<Chat />}></Route>
+            </Routes>
+          </BrowserRouter>
         </div>
-    );
+      )}{" "}
+    </div>
+  );
 }
 
 export default App;
