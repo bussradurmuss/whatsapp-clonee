@@ -41,7 +41,6 @@ function Chat() {
       });
     }
   }, [roomId]);
-  console.log(messages);
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
@@ -49,7 +48,6 @@ function Chat() {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    console.log("you typed >>>", input);
 
     const roomsRef = doc(collection(db, "rooms"), roomId);
     const messagesRef = collection(roomsRef, "messages");
